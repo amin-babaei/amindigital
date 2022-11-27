@@ -10,7 +10,7 @@ const Information = () => {
           <BsTelephone className="mx-2" />
         </Navbar.Text>
         <Navbar.Text className="text-white d-flex align-items-center">
-          aminbabaei_dev@gmail.com
+          aminbabaei_dev@yahoo.com
           <BsEnvelope className="mx-2" />
         </Navbar.Text>
       </Container>
