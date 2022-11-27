@@ -1,7 +1,6 @@
 import { useState,useEffect } from 'react';
 import { Badge, Button, Card, Offcanvas } from 'react-bootstrap';
-import { BsCart3, BsFillBagFill, BsPlusLg,BsFillTrashFill } from 'react-icons/bs'
-import { FaMinusSquare } from 'react-icons/fa'
+import { BsCart3, BsFillBagFill, BsPlusLg,BsFillTrashFill,BsDashLg } from 'react-icons/bs'
 import { RiShoppingBag3Line } from 'react-icons/ri'
 import Image from "next/image";
 import { incrementQuantity,decrementQuantity,removeItem, selectBasketItems,paymentSuccess } from '../../store/basketSlice';
@@ -93,7 +92,7 @@ const DrawerCart = () => {
                                         <p className='my-1'>{item.quantity}</p>
                                         <Button variant='danger' size='sm' onClick={()=> decriment(item._id)}
                                         disabled={item.quantity === 1}>
-                                            <FaMinusSquare className='text-white' />
+                                            <BsDashLg className='text-white' />
                                         </Button>
                                     </div>
                                 </Card.Body>
