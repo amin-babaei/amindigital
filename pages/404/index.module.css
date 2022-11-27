@@ -1,0 +1,27 @@
+.notfound h4 {
+    font-family: cabin,sans-serif;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #262626;
+}
+.notfound h1 {
+    font-family: montserrat,sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    font-size: 230px;
+    font-weight: 900;
+    margin: 0;
+    color: rgb(15, 52, 96);
+    text-transform: uppercase;
+    letter-spacing: -40px;
+    margin-left: -20px;
+}
+.notfound h1>span {
+    text-shadow: -8px 0 0 rgb(233, 69, 96);
+}

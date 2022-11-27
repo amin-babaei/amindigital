@@ -1,0 +1,5 @@
+export { default as NewProduct} from './NewProduct'
+export { default as Graphic} from './Graphic'
+export { default as ProductItem} from './ProductItem'
+export { default as SliderModal} from './SliderModal'
+export { default as Sortbar} from './Sortbar'

@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/Vazir.eot");
+  src: url("/fonts/Vazir.eot?#iefix") format("embedded-opentype"),
+  url("/fonts/Vazir.woff2") format("woff2"),
+  url("/fonts/Vazir.woff") format("woff"),
+  url("/fonts/Vazir.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+html,
+body {
+  height:100%;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Vazir", Tahoma, sans-serif;
+}
+/*      slider start     */
+.carousel-indicators button{
+  border-radius:50% !important;
+  height:13px !important;
+  width: 13px!important;
+  background-color: rgb(15, 52, 96) !important;
+}
+.carousel-control-prev,.carousel-control-next{
+  display: none;
+}
+.slick-track{
+  padding:20px 0;
+}
+.slick-next{
+  left:-7px !important;
+  z-index: 1;
+}
+.slick-prev:before, .slick-next:before{
+  color:rgb(15, 52, 96) !important;
+  font-size: 40px !important;
+  opacity:1 !important;
+}
+.slick-prev{
+  right:12px !important;
+  z-index: 1;
+}
+.slick-slider .slick-slide {
+  padding: 0 5px;
+}
+.button__bar {
+  padding: 10px;
+  background: rgb(246, 249, 252);
+  border-radius: 10px;
+}
+.button__bar ul{
+  padding: 0;
+  direction: rtl;
+}
+.button__bar li {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 3px;
+  padding: 0;
+}
+.button__bar li {
+  border: 1px solid rgb(151, 148, 148);
+  border-radius: 5px;
+  padding: 5px;
+}
+.button__bar li.slick-active {
+  border: 1px solid rgb(233, 69, 96);
+}
+/*    slider end    */
+
+.custom-dropdown-toggle .dropdown-toggle{
+  width:100%;
+  border-radius: unset;
+  font-size:14.5px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  color:black;
+}
+.dropdown-menu.show{
+  padding:0;
+  width:100%;
+}
+.btn .btn-danger:hover {
+   color: #fff;
+ }
+.p-card:hover{
+  transform: scale(1.03);
+  background-color: rgb(246, 249, 252);
+}
+.accordion-button::after{
+  margin-right: auto;
+  margin-left:0;
+}
+.pagination {
+	display: flex;
+	list-style: none;
+	border: 1px solid black;
+	border-radius: 5px;
+	width: fit-content;
+	align-items: center;
+	padding: 0;
+  margin: 3rem auto;
+}
+.pagination li a {
+			display: flex;
+			align-items: center;
+			padding: 10px 20px;
+			cursor: pointer;
+      border: 1px solid rgba(212, 212, 212, 0.418);
+}
+.p-tr:nth-child(even) {
+  background-color: rgb(246, 249, 252);
+}
