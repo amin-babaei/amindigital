@@ -12,9 +12,11 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import { motion } from "framer-motion"
 import NextNProgress from "nextjs-progressbar";
 import Head from 'next/head';
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist';
 
 function MyApp({ Component, router, pageProps }: AppProps) {
-
+    let persistor = persistStore(store);
     const variants = {
         hidden: { opacity: 0 },
         enter: { opacity: 1 },
@@ -66,6 +68,7 @@ function MyApp({ Component, router, pageProps }: AppProps) {
                     />
                     <Toaster />
                     <Provider store={store}>
+                    <PersistGate loading={null} persistor={persistor}/>
                         <MainLayout>
                             <Component {...pageProps} />
                         </MainLayout>
