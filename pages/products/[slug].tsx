@@ -154,7 +154,7 @@ export const getStaticPaths = async () => {
   const response = await fetch(`${process.env.BASE_URL}/api/products?limit=3`);
   const products = await response.json()
 
-  const paths = products.data?.map((product: any) => ({
+  const paths = products.data?.map((product:Product) => ({
     params: { slug: product.slug }
   }));
 
