@@ -13,7 +13,7 @@ const Category = () => {
     const handleOpen = ():void => {
         setOpen(prev => !prev)
     }
-    const closeOpenMenus = (e:any): void => {
+    const closeOpenMenus = (e:Event): void => {
         if(outsideMenu.current && setOpen && !outsideMenu.current.contains(e.target)){
           setOpen(false)
         }
