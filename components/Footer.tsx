@@ -83,7 +83,7 @@ const Footer = () => {
                 </div>
             </Container>
             <div className="Copyright text-center small p-3 bg-dark">
-                کلیه حقوق این وب‌سایت متعلق به فروشگاه امین دیجیتال است  <a className='text-white' href='https://www.instagram.com/aminnymous'>Copyright</a> 2015-2022 - All rights reserved ©
+                کلیه حقوق این وب‌سایت متعلق به فروشگاه امین دیجیتال است  <a className='text-white' href='https://github.com/amin-babaei'>Copyright</a> 2015-2022 - All rights reserved ©
             </div>
         </footer>
     );
