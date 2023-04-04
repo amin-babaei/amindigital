@@ -1,4 +1,3 @@
-
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -51,7 +50,7 @@ const Products = ({ products, total, perPage }: IProduct) => {
                         </Row>
                     </>
                 )}
-                {products?.length > 0 && (
+                {products?.length > 0 && pageCount > 1 && (
                     <ReactPaginate
                         previousLabel={'<<'}
                         nextLabel={'>>'}
