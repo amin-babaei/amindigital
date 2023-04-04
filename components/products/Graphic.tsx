@@ -2,8 +2,6 @@ import Link from 'next/link';
 import React from 'react';
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { AiFillCaretLeft } from 'react-icons/ai'
-import Slider from 'react-slick'
-import CartItemHolder from '../placeholder/CartItemHolder';
 import ProductItem from './ProductItem';
 
 interface Iprops {
@@ -32,9 +30,6 @@ const GraphicProduct = ({ product }: Iprops) => {
                     ))}
                 </Row>
             </Container>
-            {!product && (
-                <CartItemHolder/>
-            )}
         </section>
     );
 }

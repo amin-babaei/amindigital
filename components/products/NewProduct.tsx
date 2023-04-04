@@ -3,8 +3,7 @@ import React from 'react';
 import { Button, Container } from "react-bootstrap";
 import { AiFillCaretLeft } from 'react-icons/ai'
 import Slider from 'react-slick'
-import CartItemHolder from '../placeholder/CartItemHolder';
-import {ProductItem} from './index';
+import { ProductItem } from './index';
 
 interface Iprops {
     product: Product[];
@@ -49,14 +48,12 @@ const NewProduct = ({ product }: Iprops) => {
                         </Button>
                     </Link>
                 </header>
-                {product ? (
+                {product && (
                     <Slider {...settings}>
-                    {product?.map(item => (
-                        <ProductItem key={item._id} product={item} />
-                    ))}
-                </Slider>
-                ) : (
-                    <CartItemHolder />
+                        {product?.map(item => (
+                            <ProductItem key={item._id} product={item} />
+                        ))}
+                    </Slider>
                 )}
             </Container>
         </section>
