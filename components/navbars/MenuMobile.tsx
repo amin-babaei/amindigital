@@ -10,7 +10,7 @@ const MenuMobile = () => {
         { name: 'کارت گرافیک', slug: 'graphic-card' },
         { name: 'پردازنده', slug: 'cpu' },
         { name: 'مادربرد', slug: 'mainboard' },
-        { name: 'منبع تغذیه', slug: 'powe' },
+        { name: 'پاور', slug: 'power' },
         { name: 'حافظه رم', slug: 'ram' },
         { name: 'کیس کامپیوتر', slug: 'case' },
         { name: 'هارد دیسک', slug: 'hard' },
