@@ -44,13 +44,17 @@ $utilities: map-merge(
   .btn-mobile{
     width: 25% !important;
   }
+  .Copyright{
+    padding:15px 0;
+  }
 
 }
-@include media-breakpoint-down(sm){
+@include media-breakpoint-down(lg){
   .display-2{
     font-size:1rem !important;
   }
   .Copyright{
-    margin-bottom:50px
+    padding-bottom: 70px;
+    padding-top: 20px;
   }
 }

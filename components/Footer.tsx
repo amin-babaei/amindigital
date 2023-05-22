@@ -82,7 +82,7 @@ const Footer = () => {
                     <Image src='/images/sabt.png' width={100} height={100} alt='نماد ثبت'/>
                 </div>
             </Container>
-            <div className="Copyright text-center small p-3 bg-dark">
+            <div className="Copyright text-center small bg-dark">
                 کلیه حقوق این وب‌سایت متعلق به فروشگاه امین دیجیتال است  <a className='text-white' href='https://github.com/amin-babaei'>Copyright</a> {new Date().getFullYear()} - All rights reserved ©
             </div>
         </footer>
