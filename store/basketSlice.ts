@@ -1,70 +1,68 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {toast} from "react-hot-toast";
+import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-hot-toast";
 import { RootState } from "./store";
 
-export interface BasketState {
-  items: Product[];
-}
-
-const initialState: BasketState = {
-  items: [],
-};
+const cartAdapter = createEntityAdapter<Product>({
+  selectId: item => item._id
+});
 
 export const basketSlice = createSlice({
   name: "basket",
-  initialState,
+  initialState: cartAdapter.getInitialState(),
   reducers: {
     addToCart: (state, action) => {
-      let itemInCart = state.items.findIndex((item) => item._id === action.payload._id);
-      if (itemInCart >= 0) {
-        state.items[itemInCart] = {
-          ...state.items[itemInCart],
-          quantity: state.items[itemInCart].quantity + 1,
-        };
+      const itemInCart = state.entities[action.payload.id]
+      if (itemInCart) {
+        itemInCart.quantity += 1
         toast.success('یک تعداد به مقدار اضافه شد', {
           position: "top-center",
-          duration:3000,
+          duration: 3000,
           style: {
-              background: 'green',
-              color: '#fff',
-            },
+            background: 'green',
+            color: '#fff',
+          },
         });
       } else {
-          let tempProductItem = { ...action.payload, quantity: 1 };
-          state.items.push(tempProductItem);
-          toast.success('به سبد خرید شما اضافه شد', {
-            position: "top-center",
-            duration:3000,
-            style: {
-                background: 'green',
-                color: '#fff',
-              },
-          });
+        cartAdapter.addOne(state, { ...action.payload, quantity: 1 })
+        toast.success('به سبد خرید شما اضافه شد', {
+          position: "top-center",
+          duration: 3000,
+          style: {
+            background: 'green',
+            color: '#fff',
+          },
+        });
       }
     },
     incrementQuantity: (state, action) => {
-      const itemInCart = state.items.find((item) => item._id === action.payload.id);
+      const itemInCart = state.entities[action.payload.id]
       if (itemInCart) {
-        itemInCart.quantity++;
+        itemInCart.quantity+=1;
       }
     },
     decrementQuantity: (state, action) => {
-      const itemInCart = state.items.find((item) => item._id === action.payload.id);
+      const itemInCart = state.entities[action.payload.id];
       if (itemInCart) {
-        itemInCart.quantity--;
+        itemInCart.quantity-=1;
       }
     },
     removeItem: (state, action) => {
-      const removeItem = state.items.filter((item) => item._id !== action.payload.id);
-      state.items = removeItem;
+      cartAdapter.removeOne(state, action.payload._id);
     },
     paymentSuccess(state) {
-      state.items = [];
+      cartAdapter.removeAll(state);
     },
   },
 });
+const selectCartState = (state: RootState) => state.basket;
 
-export const { addToCart, incrementQuantity,decrementQuantity,removeItem,paymentSuccess } = basketSlice.actions;
+export const selectBasketItems = createSelector(
+  selectCartState,
+  (cart) => cartAdapter.getSelectors().selectAll(cart)
+);
+export const selectCartTotal = createSelector(selectBasketItems, (items) =>
+  items.reduce((total, item) => total + item.totalPrice * item.quantity, 0)
+);
 
-export const selectBasketItems = (state: RootState) => state.basket.items;
+export const { addToCart, incrementQuantity, decrementQuantity, removeItem, paymentSuccess } = basketSlice.actions;
 export default basketSlice.reducer;
