@@ -11,10 +11,10 @@ export const basketSlice = createSlice({
   initialState: cartAdapter.getInitialState(),
   reducers: {
     addToCart: (state, action) => {
-      const itemInCart = state.entities[action.payload.id]
+      const itemInCart = state.entities[action.payload._id]
       if (itemInCart) {
         itemInCart.quantity += 1
-        toast.success('یک تعداد به مقدار اضافه شد', {
+        toast.success(`یک تعداد به مقدار ${itemInCart.title} اضافه شد`, {
           position: "top-center",
           duration: 3000,
           style: {
@@ -24,7 +24,7 @@ export const basketSlice = createSlice({
         });
       } else {
         cartAdapter.addOne(state, { ...action.payload, quantity: 1 })
-        toast.success('به سبد خرید شما اضافه شد', {
+        toast.success(`${action.payload.title} به سبد خرید شما اضافه شد`, {
           position: "top-center",
           duration: 3000,
           style: {
