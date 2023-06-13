@@ -1,5 +1,7 @@
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+"use client"
+import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation'
+import { useCallback, useState } from 'react';
 import { Button, Offcanvas } from 'react-bootstrap';
 import { TbAdjustmentsHorizontal } from 'react-icons/tb'
 
@@ -10,18 +12,27 @@ const sortOption:{lable:string,id:string}[] = [
     { lable: 'ارزان ترین', id: 'asc' }
 ]
 const Sortbar = () => {
-    const [show, setShow] = useState<boolean>(false);
-
+    const searchParams = useSearchParams()!
     const router = useRouter()
-    const [sort, setSort] = useState(router.query.sort || "newset")
+    const pathname = usePathname()
+    
+    const [show, setShow] = useState<boolean>(false);
+    const [sort, setSort] = useState(searchParams.get("sort"));
 
-    const sortHandler = (id: string):void => {
-        setSort(id);
-        router.query.sort = id;
-        router.push(
-            { pathname: router.pathname, query: router.query }
-        )
-    }
+    const createQueryString = useCallback(
+        (name: string, value: string) => {
+          const params = new URLSearchParams(searchParams)
+          params.set(name, value)
+     
+          return params.toString()
+        },
+        [searchParams]
+      )
+    
+    const sortHandler = (id:string) => {
+        setSort(id)
+        router.push(pathname + "?" + createQueryString("sort", id));
+      };
     const handleClose = ():void => setShow(false);
     const handleShow = ():void => setShow(true);
     return (

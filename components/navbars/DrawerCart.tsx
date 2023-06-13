@@ -1,3 +1,4 @@
+"use client"
 import { useState } from 'react';
 import { Badge, Button, Card, Offcanvas } from 'react-bootstrap';
 import { BsCart3, BsFillBagFill, BsPlusLg, BsFillTrashFill, BsDashLg } from 'react-icons/bs'
@@ -74,7 +75,7 @@ const DrawerCart = () => {
                                     </div>
                                     <div className='w-25 h-100 mx-2 position-relative'>
                                         <Image unoptimized loader={() => `${process.env.BASE_URL}/${item.images[0]}`}
-                                            layout='fill' src={`${process.env.BASE_URL}/${item.images[0]}`}
+                                            fill src={`${process.env.BASE_URL}/${item.images[0]}`}
                                             alt={item.title} />
                                     </div>
                                     <div className='d-flex flex-column justify-content-center align-items-center'>

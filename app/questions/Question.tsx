@@ -1,13 +1,9 @@
-import Head from 'next/head';
-import React from 'react';
+"use client"
 import { Accordion, Container } from "react-bootstrap";
 
 const Questions = () => {
     return (
         <section className='my-5'>
-            <Head>
-                <title>سوالات متداول</title>
-            </Head>
             <Container>
                 <Accordion flush>
                     <Accordion.Item eventKey="0" className='my-4'>
@@ -57,6 +53,5 @@ const Questions = () => {
         </section>
     )
 }
-    ;
 
 export default Questions;

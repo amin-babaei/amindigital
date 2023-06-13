@@ -1,3 +1,4 @@
+"use client"
 import {Dropdown} from "react-bootstrap";
 import { useState } from 'react';
 import Link from "next/link";

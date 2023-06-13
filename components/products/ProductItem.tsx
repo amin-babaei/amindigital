@@ -1,4 +1,4 @@
-import React from 'react';
+"use client"
 import { Button, Card } from "react-bootstrap";
 import { BsPlusLg } from 'react-icons/bs'
 import Image from "next/image";

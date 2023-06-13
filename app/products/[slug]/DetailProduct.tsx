@@ -1,27 +1,21 @@
-import { GetStaticProps } from 'next';
-import React, { useState } from 'react'
+"use client"
+import { useState } from 'react'
 import { Row, Container, Col, Alert, Button, Modal, Table } from 'react-bootstrap';
 import Link from 'next/link';
 import { BsCart3 } from 'react-icons/bs'
 import Image from 'next/image';
-import {SliderModal} from './../../components/products';
-import { addToCart } from '../../store/basketSlice';
+import { SliderModal } from '../../../components/products';
+import { addToCart } from '../../../store/basketSlice';
 import { useDispatch } from 'react-redux';
 import StarRatings from 'react-star-ratings';
-import { useRouter } from 'next/router';
-import { ParsedUrlQuery } from 'querystring'
-import SlugPlaceholder from '../../components/placeholder/SlugPlaceholder';
-import Head from 'next/head';
 
 interface IProduct {
   products: Product[];
 }
-interface IParams extends ParsedUrlQuery {
-  slug: string
-}
+
 const DetailProduct = ({ products }: IProduct) => {
   const [show, setShow] = useState<boolean>(false);
-  const router = useRouter()
+
   const handleClose = (): void => setShow(false);
   const handleShow = (): void => setShow(true);
   const dispatch = useDispatch();
@@ -31,16 +25,8 @@ const DetailProduct = ({ products }: IProduct) => {
 
   };
 
-  if (router.isFallback) {
-    return (
-      <SlugPlaceholder/>
-    )
-  }
   return (
     <section>
-      <Head>
-        <title>{products[0].title}</title>
-      </Head>
       <Container>
         <ul className='d-flex align-items-center px-0 py-2 mt-3 mb-5 bg-light'>
           <Link href="/">
@@ -55,14 +41,14 @@ const DetailProduct = ({ products }: IProduct) => {
         </ul>
         <Row>
           <Col lg={4} sm={12} className='mb-5'>
-              <div className='w-100 d-flex justify-content-center align-items-center position-relative border' style={{ height: "300px" }}>
-                <Image unoptimized loader={() => `${process.env.BASE_URL}/${products[0].images[0]}`} width={250} height={200} src={`${process.env.BASE_URL}/${products[0].images[0]}`} alt={products[0].title} />
-              </div>
-              <div className='w-100 d-flex align-items-center position-relative'>
-                {products[0].images.map((image, index) => (
-                  <Image unoptimized className='border px-2 cursor-pointer' key={index} loader={() => `${process.env.BASE_URL}/${image}`} width={80} height={80} src={`${process.env.BASE_URL}/${image}`} alt={products[0].title}  onClick={handleShow}/>
-                ))}
-              </div>
+            <div className='w-100 d-flex justify-content-center align-items-center position-relative border' style={{ height: "300px" }}>
+              <Image unoptimized loader={() => `${process.env.BASE_URL}/${products[0].images[0]}`} width={250} height={200} src={`${process.env.BASE_URL}/${products[0].images[0]}`} alt={products[0].title} />
+            </div>
+            <div className='w-100 d-flex align-items-center position-relative'>
+              {products[0].images.map((image, index) => (
+                <Image unoptimized className='border px-2 cursor-pointer' key={index} loader={() => `${process.env.BASE_URL}/${image}`} width={80} height={80} src={`${process.env.BASE_URL}/${image}`} alt={products[0].title} onClick={handleShow} />
+              ))}
+            </div>
             <Modal size='lg' show={show} onHide={handleClose} centered>
               <Modal.Body className='h-100'>
                 <SliderModal images={products[0].images} />
@@ -132,35 +118,5 @@ const DetailProduct = ({ products }: IProduct) => {
     </section>
   )
 }
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { slug } = context.params as IParams
-  const response = await fetch(`${process.env.BASE_URL}/api/products/${slug}`);
-  const { product } = await response.json();
 
-  if (product.length === 0) {
-    return {
-      notFound: true,
-    }
-  }
-  return {
-    props: {
-      products: product
-    },
-    revalidate: 10
-  };
-};
-
-export const getStaticPaths = async () => {
-  const response = await fetch(`${process.env.BASE_URL}/api/products?limit=3`);
-  const products = await response.json()
-
-  const paths = products.data?.map((product:Product) => ({
-    params: { slug: product.slug }
-  }));
-
-  return {
-    paths,
-    fallback: true,
-  };
-};
 export default DetailProduct 

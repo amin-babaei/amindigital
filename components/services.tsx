@@ -1,4 +1,4 @@
-import React from 'react';
+"use client"
 import {Card, Col, Container, Row} from "react-bootstrap";
 import {FaHeadset} from 'react-icons/fa'
 import {AiOutlineSafetyCertificate} from 'react-icons/ai'

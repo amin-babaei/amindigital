@@ -1,12 +1,10 @@
-import { GetServerSideProps } from 'next';
-import { useRouter } from 'next/router';
+"use client"
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import queryString from 'query-string'
-import {Sortbar,ProductItem} from '../../components/products';
+import { Sortbar, ProductItem } from '.';
 import Image from 'next/image';
-import Head from 'next/head';
 
 interface IProduct {
     products: Product[];
@@ -14,27 +12,31 @@ interface IProduct {
     perPage: number
 }
 
-const Products = ({ products, total, perPage }: IProduct) => {
+const ProductsList = ({ products, total, perPage }: IProduct) => {
     const [currentPage] = useState<number>(1);
     const router = useRouter()
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
+    const [pageParams] = useState(searchParams.get("page")||"1");
+
+    const createQueryString = useCallback(
+        (name: string, value: string) => {
+          const params = new URLSearchParams(searchParams)
+          params.set(name, value)
+     
+          return params.toString()
+        },
+        [searchParams]
+      )
 
     const pageCount = Math.ceil(total / perPage)
     const pagginationHandler = (page: any) => {
-        const currentPath = router.pathname;
-        const currentQuery = router.query;
-        currentQuery.page = page.selected + 1;
-
-        router.push({
-            pathname: currentPath,
-            query: currentQuery,
-        });
+        let currentQuery = pageParams;
+        currentQuery = page.selected + 1;
+        router.push(pathname + "?" + createQueryString("page", currentQuery));
     };
-
     return (
         <section>
-            <Head>
-                <title>محصولات</title>
-            </Head>
             <Container>
                 {products?.length === 0 ? <div className='d-flex align-items-center justify-content-center' style={{ minHeight: '75vh' }}>
                     <Image src='/images/no-product.png' width={500} height={500} alt='no product' />
@@ -42,7 +44,7 @@ const Products = ({ products, total, perPage }: IProduct) => {
                     <>
                         <Sortbar />
                         <Row className="mt-4">
-                            {products?.map(product => (
+                            {products.map(product => (
                                 <Col lg={4} sm={12} key={product._id} className='mb-3'>
                                     <ProductItem product={product} />
                                 </Col>
@@ -50,7 +52,7 @@ const Products = ({ products, total, perPage }: IProduct) => {
                         </Row>
                     </>
                 )}
-                {products?.length > 0 && pageCount > 1 && (
+                 {products?.length > 0 && pageCount > 1 && (
                     <ReactPaginate
                         previousLabel={'<<'}
                         nextLabel={'>>'}
@@ -63,29 +65,10 @@ const Products = ({ products, total, perPage }: IProduct) => {
                         pageRangeDisplayed={3}
                         onPageChange={pagginationHandler}
                     />
-                )}
+                 )}
             </Container>
         </section>
     )
 }
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-    try {
-        const response = await fetch(`${process.env.BASE_URL}/api/products?${queryString.stringify(query)}`);
-        const products = await response.json()
 
-        return {
-            props: {
-                products: products.data,
-                total: products.totalProducts,
-                perPage: products.perPage
-            },
-        };
-    } catch (error) {
-        console.log(error);
-        return {
-            props: {},
-        };
-    }
-
-};
-export default Products
+export default ProductsList

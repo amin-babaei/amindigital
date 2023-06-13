@@ -1,4 +1,5 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+"use client"
+import { Component, ErrorInfo, ReactNode } from "react";
 import { Button } from "react-bootstrap";
 
 interface Props {

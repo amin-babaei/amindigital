@@ -1,3 +1,4 @@
+"use client"
 export { default as NewProduct} from './NewProduct'
 export { default as Graphic} from './Graphic'
 export { default as ProductItem} from './ProductItem'

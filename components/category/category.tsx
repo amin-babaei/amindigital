@@ -1,15 +1,15 @@
 import {Button, Dropdown} from "react-bootstrap";
 import {BsFillGridFill} from "react-icons/bs";
-import {useRouter} from "next/router";
 import CategoryItems from "./categoryItems";
 import { useEffect, useRef, useState} from "react";
+import { usePathname, useSearchParams } from 'next/navigation'
 
 const Category = () => {
     const [open,setOpen] = useState<boolean>(false)
     const initialRef: any = null;
     const outsideMenu = useRef(initialRef)
-    const router = useRouter()
-
+    const pathname = usePathname()
+    const params = useSearchParams()
     const handleOpen = ():void => {
         setOpen(prev => !prev)
     }
@@ -25,10 +25,10 @@ const Category = () => {
         if (open) {
             setOpen(!setOpen);
         }
-      }, [router.asPath]);
+      }, [pathname,params]);
     return (
         <>
-            {router.pathname === '/' ? (
+            {pathname === '/' ? (
             <Dropdown show>
                 <Button variant="light">
                     دسته بندی

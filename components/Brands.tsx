@@ -1,7 +1,6 @@
-import React from 'react';
+"use client"
 import Image from "next/image";
 import Slider from "react-slick";
-
 
 const Brands = () => {
     const settings = {
@@ -36,32 +35,32 @@ const Brands = () => {
                 <Slider {...settings}>
                     <div className='mx-5'>
                         <div className='w-50 position-relative m-auto' style={{height: "100px"}}>
-                            <Image layout="fill" src="/images/amd.png" alt='amd' priority/>
+                            <Image fill src="/images/amd.png" alt='amd' priority/>
                         </div>
                     </div>
                     <div className='mx-5'>
                         <div className='w-50 position-relative m-auto' style={{height: "100px"}}>
-                            <Image layout="fill" src="/images/asus.png" alt='asus' priority/>
+                            <Image fill src="/images/asus.png" alt='asus' priority/>
                         </div>
                     </div>
                     <div className='mx-5'>
                         <div className='w-50 position-relative m-auto' style={{height: "100px"}}>
-                            <Image layout="fill" src="/images/zotac.png" alt='zotac' priority/>
+                            <Image fill src="/images/zotac.png" alt='zotac' priority/>
                         </div>
                     </div>
                     <div className='mx-5'>
                         <div className='w-50 position-relative m-auto' style={{height: "100px"}}>
-                            <Image layout="fill" src="/images/msi.png" alt='msi' priority/>
+                            <Image fill src="/images/msi.png" alt='msi' priority/>
                         </div>
                     </div>
                     <div className='mx-5'>
                         <div className='w-50 position-relative m-auto' style={{height: "100px"}}>
-                            <Image layout="fill" src="/images/intel.png" alt='intel' priority/>
+                            <Image fill src="/images/intel.png" alt='intel' priority/>
                         </div>
                     </div>
                     <div className='mx-5'>
                         <div className='w-50 position-relative m-auto' style={{height: "100px"}}>
-                            <Image layout="fill" src="/images/gigabyte.png" alt='gigabyte'/>
+                            <Image fill src="/images/gigabyte.png" alt='gigabyte'/>
                         </div>
                     </div>
 

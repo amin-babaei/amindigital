@@ -1,5 +1,5 @@
+"use client"
 import Link from 'next/link';
-import React from 'react';
 import { Button, Container } from "react-bootstrap";
 import { AiFillCaretLeft } from 'react-icons/ai'
 import Slider from 'react-slick'
