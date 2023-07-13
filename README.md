@@ -17,7 +17,7 @@ This project utilized Next.js with TypeScript and React-Bootstrap on the front-e
 <br/>
 
 ## 🚀 Features
-- Sorting Based on Price, popular, asc&desc, newset
+- Sorting Based on Price, Popular, Asc&Desc, Newset
 - Search product
 - Pagination
 - Product purchase
