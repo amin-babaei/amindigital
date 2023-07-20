@@ -2,8 +2,9 @@ import Slider from 'react-slick'
 import Image from "next/image";
 interface Iimages {
   images: {}[];
+  select: number
 }
-const SliderModal = ({ images }: Iimages) => {
+const SliderModal = ({ images,select }: Iimages) => {
 
   let image = images.map(function (image) {
     return `${process.env.BASE_URL}/${image}`;
@@ -36,7 +37,7 @@ const SliderModal = ({ images }: Iimages) => {
   };
 
   return (
-    <Slider {...settings} lazyLoad='progressive'>
+    <Slider {...settings} lazyLoad='progressive' initialSlide={select}>
       {images.map((image, index) => (
         <div key={index} className='w-100 d-flex justify-content-center align-items-center position-relative' style={{ height: "300px" }}>
           <Image unoptimized loader={() => `${process.env.BASE_URL}/${image}`} width={500} height={400} src={`${process.env.BASE_URL}/${image}`} alt='product' />

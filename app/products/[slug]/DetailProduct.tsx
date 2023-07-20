@@ -15,9 +15,13 @@ interface IProduct {
 
 const DetailProduct = ({ products }: IProduct) => {
   const [show, setShow] = useState<boolean>(false);
+  const [selectImgId, setSelectImgId] = useState<number>(0);
 
   const handleClose = (): void => setShow(false);
-  const handleShow = (): void => setShow(true);
+  const handleShow = (id:number): void => {
+    setShow(true)
+    setSelectImgId(id)
+  }
   const dispatch = useDispatch();
 
   const addItemToBasket = (): void => {
@@ -44,14 +48,14 @@ const DetailProduct = ({ products }: IProduct) => {
             <div className='w-100 d-flex justify-content-center align-items-center position-relative border' style={{ height: "300px" }}>
               <Image unoptimized loader={() => `${process.env.BASE_URL}/${products[0].images[0]}`} width={250} height={200} src={`${process.env.BASE_URL}/${products[0].images[0]}`} alt={products[0].title} />
             </div>
-            <div className='w-100 d-flex align-items-center position-relative'>
-              {products[0].images.map((image, index) => (
-                <Image unoptimized className='border px-2 cursor-pointer' key={index} loader={() => `${process.env.BASE_URL}/${image}`} width={80} height={80} src={`${process.env.BASE_URL}/${image}`} alt={products[0].title} onClick={handleShow} />
+            <div className='w-100 d-flex align-items-center position-relative justify-content-end' dir='ltr'>
+              {products[0].images.slice().reverse().map((image, index) => (
+                <Image unoptimized className='border px-2 cursor-pointer' key={index} loader={() => `${process.env.BASE_URL}/${image}`} width={80} height={80} src={`${process.env.BASE_URL}/${image}`} alt={products[0].title} onClick={() => handleShow(index)}/>
               ))}
             </div>
             <Modal size='lg' show={show} onHide={handleClose} centered>
               <Modal.Body className='h-100'>
-                <SliderModal images={products[0].images} />
+                <SliderModal images={products[0].images} select={selectImgId}/>
               </Modal.Body>
             </Modal>
           </Col>
