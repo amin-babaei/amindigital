@@ -12,6 +12,7 @@ export const metadata = {
   icons: {
       icon:'/favicon.ico',
   },
+  manifest: "/manifest.json",
 };  
 export default async function RootLayout({ children }:RootLayoutProps) {
   return (
