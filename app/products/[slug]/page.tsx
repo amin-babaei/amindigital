@@ -29,7 +29,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
     const { product } = await getProduct(slug);
 
     return (
-        <DetailProduct products={product} />
+        <DetailProduct product={product[0]} />
     )
 }
 export default page
