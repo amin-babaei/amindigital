@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import DetailProduct from './DetailProduct';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata(
     { params }: { params: { slug: string } }
@@ -8,7 +9,7 @@ export async function generateMetadata(
     const { product } = await getProduct(slug);
   
     return {
-      title: product[0].title,
+      title: product ? product[0].title : 'صفحه ای یافت نشد'
     }
   }
 
@@ -27,6 +28,8 @@ const getProduct = async (slug: string) => {
 const page = async ({ params }: { params: { slug: string } }) => {
     const { slug } = params;
     const { product } = await getProduct(slug);
+
+    if(!product) notFound()
 
     return (
         <DetailProduct product={product[0]} />
