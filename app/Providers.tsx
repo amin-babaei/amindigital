@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { store } from '../store/store';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react'
-import MainLayout from "../layouts/MainLayout";
 import { usePathname } from "next/navigation";
 
 interface Props {
@@ -45,11 +44,9 @@ export default function Providers({ children }:Props) {
                     <Toaster />
                     <Provider store={store}>
                         <PersistGate loading={null} persistor={persistor} />
-                        <MainLayout>
                             <>
                                 {children}
                             </>
-                        </MainLayout>
                     </Provider>
                 </SSRProvider>
             </ErrorBoundary>

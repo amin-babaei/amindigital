@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { Suspense } from 'react'
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MenuMobile from "../components/navbars/MenuMobile";
@@ -7,13 +7,15 @@ import MenuMobile from "../components/navbars/MenuMobile";
 type Props = {
     children: JSX.Element,
 };
-const MainLayout = ({children} : Props) => {
-    return(
+const MainLayout = ({ children }: Props) => {
+    return (
         <>
-            <Header/>
+            <Suspense fallback={<p>loading ...</p>}>
+                <Header />
+            </Suspense>
             {children}
-            <MenuMobile/>
-            <Footer/>
+            <MenuMobile />
+            <Footer />
         </>
     )
 }
