@@ -14,7 +14,7 @@ const getNewProducts = async () => {
   return newProducts;
 };
 const getGraphicProducts = async () => {
-  const responseGraphic = await fetch(`${process.env.BASE_URL}/api/products?category=graphic-card&limit=4`);
+  const responseGraphic = await fetch(`${process.env.BASE_URL}/api/products?category=graphic-card&limit=4`, { cache: "force-cache" });
   const graphicProducts = await responseGraphic.json()
   return graphicProducts;
 };
