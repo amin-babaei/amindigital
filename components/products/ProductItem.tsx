@@ -44,12 +44,12 @@ const ProductItem = ({ product }: Iprops) => {
                             <>
                                 <del className='small'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'IRR' }).format(product.discountPrice).replace("IRR", "تومان")}</del>
                                 <br />
-                                <span className='me-2 text-danger'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'IRR' }).format(product.totalPrice).replace("IRR", "تومان")}</span>
+                                <span className='me-2 text-danger fw-bold'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'IRR' }).format(product.totalPrice).replace("IRR", "تومان")}</span>
                             </>
                         ) : <span>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'IRR' }).format(product.totalPrice).replace("IRR", "تومان")}</span>
                         }
                     </div>
-                    <Button variant='danger' size='sm' onClick={addItemToBasket}>
+                    <Button variant='danger' size="lg" onClick={addItemToBasket}>
                         <BsPlusLg className='text-white' />
                     </Button>
                 </div>
