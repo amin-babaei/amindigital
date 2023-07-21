@@ -55,7 +55,7 @@ const Brands = () => {
                     </div>
                     <div className='mx-5'>
                         <div className='w-50 position-relative m-auto' style={{height: "100px"}}>
-                            <Image fill src="/images/intel.png" alt='intel' priority/>
+                            <Image fill src="/images/Intel.png" alt='intel' priority/>
                         </div>
                     </div>
                     <div className='mx-5'>
