@@ -24,18 +24,18 @@ const MenuMobile = () => {
     return (
         <Navbar bg='body' className="p-0 shadow-lg border-top d-lg-none" fixed="bottom" style={{ zIndex: '2' }}>
             <div className='d-flex w-100'>
-                <Link href='/'>
+                <Link href='/' className='d-flex flex-grow-1'>
                     <Button variant='light' className='d-flex flex-column justify-content-between align-items-center flex-grow-1'>
                         <AiOutlineHome className='mb-1' />
                         <p className="display-1 m-0">خانه</p>
                     </Button>
                 </Link>
-                <Button variant='light' className='d-flex flex-column justify-content-between align-items-center flex-grow-1'
+                <Button variant='light' className='d-flex flex-grow-1 flex-column justify-content-between align-items-center flex-grow-1'
                     onClick={handleShow}>
                     <BsFillGridFill className='mb-1' />
                     <p className="display-1 m-0">دسته بندی</p>
                 </Button>
-                <Link href='/questions'>
+                <Link href='/questions' className='d-flex flex-grow-1'>
                     <Button variant='light' className='d-flex flex-column justify-content-between align-items-center flex-grow-1'>
                         <FaHeadset className='mb-1' />
                         <p className="display-1 m-0">پشتیبانی</p>
