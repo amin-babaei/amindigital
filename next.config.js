@@ -8,7 +8,7 @@ module.exports = withPWA({
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['server-amindigital.vercel.app'],
+    domains: ['serveramindigital.onrender.com'],
   },
   env: {
     BASE_URL: process.env.BASE_URL,
