@@ -83,7 +83,9 @@ const Footer = () => {
                 </div>
             </Container>
             <div className="Copyright text-center small bg-dark">
-                کلیه حقوق این وب‌سایت متعلق به فروشگاه امین دیجیتال است  <a className='text-white' href='https://github.com/amin-babaei'>Copyright</a> {new Date().getFullYear()} - All rights reserved ©
+                <a className='text-white' href='https://github.com/amin-babaei'>
+                    کلیه حقوق این وب‌سایت متعلق به فروشگاه امین دیجیتال است Copyright {new Date().toLocaleDateString("fa-IR",{year:'numeric'})} ©
+                </a>
             </div>
         </footer>
     );
