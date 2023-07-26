@@ -39,7 +39,7 @@ const ProductsList = ({ products, total, perPage }: IProduct) => {
         <section>
             <Container>
                 {products?.length === 0 ? <div className='d-flex align-items-center justify-content-center' style={{ minHeight: '75vh' }}>
-                    <Image src='/images/no-product.png' width={500} height={500} alt='no product' />
+                    <Image src='/images/no-product.png' width={300} height={300} alt='no product' />
                 </div> : (
                     <>
                         <Sortbar />
