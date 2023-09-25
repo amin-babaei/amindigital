@@ -1,7 +1,11 @@
 import Image from "next/image";
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Navbar, Spinner } from "react-bootstrap";
 import SearchInput from "./SearchInput";
-import Drawer from "../cart/Drawer";
+import dynamic from "next/dynamic";
+const Drawer = dynamic(() => import('../cart/Drawer'), {
+  ssr: false,
+  loading: () => <Spinner animation="border" variant="primary" />
+});
 
 const TopNavbar = () => {
   return (
