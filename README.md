@@ -22,6 +22,7 @@ This project utilized Next.js with TypeScript and React-Bootstrap on the front-e
 - Pagination
 - Product purchase
 - Product categorization.
+- Choose a location on a map during the checkout process !
 
 <br />
 
