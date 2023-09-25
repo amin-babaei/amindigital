@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container, Navbar } from "react-bootstrap";
-import DrawerCart from "./DrawerCart";
 import SearchInput from "./SearchInput";
+import Drawer from "../cart/Drawer";
 
 const TopNavbar = () => {
   return (
@@ -17,7 +17,7 @@ const TopNavbar = () => {
         </Navbar.Brand>
         <SearchInput/>
         <div className='d-flex'>
-          <DrawerCart />
+          <Drawer/>
         </div>
       </Container>
     </Navbar>

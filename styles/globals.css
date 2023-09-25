@@ -124,3 +124,9 @@ a {
 .p-tr:nth-child(even) {
   background-color: rgb(246, 249, 252);
 }
+.leaflet-container {
+  height: 100%;
+}
+.leaflet-marker-icon{
+  border-radius: 50%;
+}
